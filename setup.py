@@ -7,6 +7,7 @@ https://github.com/pypa/sampleproject
 
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
+from setuptools_behave import behave_test
 import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
@@ -38,6 +39,12 @@ setup(
     # project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
     version='2.0.0',  # Required
+
+    #Behave
+    tests_require=["behave>=1.2.4"],
+    cmdclass = {
+        "behave_test": behave_test,
+    },
 
     # This is a one-line description or tagline of what your project does. This
     # corresponds to the "Summary" metadata field:
@@ -181,6 +188,7 @@ setup(
     entry_points={  # Optional
         'console_scripts': [
             'sample=sample:main',
+            'fizzbuzz=fizzbuzz:FizzBuzz'
         ],
     },
 
